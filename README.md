@@ -1,0 +1,2 @@
+# bgit
+git interface library
