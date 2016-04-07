@@ -1,0 +1,23 @@
+{
+  "name": "bgit",
+  "version": "0.1",
+  "description": "git interface library",
+  "url": "https://github.com/BlackEarth/bgit",
+  "author": "Sean Harrison",
+  "author_email": "sah@blackearthgroup.com",
+  "license": "LGPL 3.0",
+  "package_data": {},
+  "classifiers": [
+    "Development Status :: 1 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
+    "Programming Language :: Python :: 3.4"
+  ],
+  "entry_points": {},
+  "install_requires": ["bl"],
+  "extras_require": {
+    "dev": [],
+    "test": []
+  },
+  "data_files": []
+}
