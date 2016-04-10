@@ -19,5 +19,6 @@
     "dev": [],
     "test": []
   },
-  "data_files": []
+  "data_files": [],
+  "scripts": []
 }
