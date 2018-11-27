@@ -3,13 +3,19 @@
 Create a set of patches from the current or given git repository, in the patches subfolder.
 Usage:
 
-    $ python make-patches.py [BASE]  
+    $ python patches.py [--base BASE --src SRC --dest DEST]
+
+or:
+
+    $ python -m bgit.patches [--base BASE --src SRC --dest DEST]
 
 BASE = the hash of the "base" commit after which to start making patches.
 If BASE is omitted, patches are made for every commit in the log history.
+Patches are made from the SRC folder (default = the current working directory).
 Patches are made by comparing each commit after BASE with the one before it.
-Patches are named based on the timestamp of the commit, so that the patches will sort in order.
-Patches are written to the "patches" subfolder of the current directory.
+Patches are written to the DEST folder (default = the "patches" subfolder of the current directory).
+Patches are named by the timestamp + hash of the commit, so the patches will sort chronologically.
+Existing patches are not overwritten (but if they were, they wouldn't be different).
 """
 
 import logging, os, sys, subprocess
@@ -19,10 +25,10 @@ log = logging.getLogger(os.path.basename(__file__))
 
 
 @click.command()
-@click.option('--log-level', default=20)
-@click.option('--base', default=None)
-@click.option('--src', type=click.Path(exists=True), default=None)
-@click.option('--dest', type=click.Path(), default=None)
+@click.option('--log_level', '-l', default=20, help="log level")
+@click.option('--base', '-b', default=None, help="the hash of the base revision")
+@click.option('--src', '-s', type=click.Path(exists=True), help="source folder, default CWD")
+@click.option('--dest', '-d', type=click.Path(), help="destination folder, default CWD/patches")
 def main(log_level, base, src, dest):
 
     logging.basicConfig(level=log_level)
